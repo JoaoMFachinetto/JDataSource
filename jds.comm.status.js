@@ -21,3 +21,27 @@ Livre(FSF) Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 */
 
+
+/*
+	É necessáerio criar uma DIV para mostrar o status da comunicação.
+*/
+
+function SysStatusError(StatusText) {
+    $("#SysStatus").html(StatusText);
+}
+
+function SysStatusCommunicating() {
+    $("#SysStatus").html("Buscando dados do Servidor...");
+}
+
+function SysStatusCommunicatingError() {        
+    $("#SysStatus").html("Ocorreu um erro ao comunicar com o servidor");
+}
+
+function SysStatusCommunicatingComplete() {
+    $("#SysStatus").html("Ok");
+}
+
+function SysStatusOk() {
+    $("#SysStatus").html("Ok");
+}
