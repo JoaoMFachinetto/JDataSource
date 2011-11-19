@@ -15,16 +15,16 @@ Notícias em: http://jdatasource.blogspot.com/
 	Caso a variável ServerOK seja True a camada de dados irá enviar as informações para a página para que o desenvolvedor possa utilizar na página.
 		
 	Em C#:		
-	public class ServerResponse
-    {
-		public ServerData ServerData;
-        public bool ServerOK;
-        public string ServerError;
-        public int ErrorCode;        
-    }
+public class ServerResponse
+{
+	public ServerData ServerData;
+    public bool ServerOK;
+    public string ServerError;
+    public int ErrorCode;        
+}
 
-    public class ServerData
-    {        
-        public int TotalRecords;
-        public object Data;
-    }
+public class ServerData
+{        
+	public int TotalRecords;
+    public object Data;
+}
