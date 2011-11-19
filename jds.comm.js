@@ -31,6 +31,7 @@ Para informações do pacote padrão ler o arquivo README.txt
 */
 
 
+
 /* ESTE METODO E UTILIZADO PARA ENVIAR E RECEBER DADOS DO SERVIDOR UTILIZANDO O METODO POST */
 function AsyncPostData(DataSourceAddr, RequestData, onServerResponse) {
     SysStatusCommunicating();
