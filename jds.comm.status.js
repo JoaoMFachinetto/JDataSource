@@ -23,7 +23,7 @@ Livre(FSF) Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
 /*
-	É necessáerio criar a DIV SysStatus para mostrar o status da comunicação.
+	É necessáerio criar um Span com Id SysStatus para mostrar o status da comunicação.
 */
 
 function SysStatusError(StatusText) {
