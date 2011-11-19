@@ -1,3 +1,30 @@
 Sinta-se a vontade para colaborar.
 
 Notícias em: http://jdatasource.blogspot.com/
+
+1 - Como implementar o pacote de resposta do servidor:
+	 - 1.1 - Este pacote deve ser criado no servidor.
+	 - 1.2 - Este pacote deve ser serializado com JSon e enviado para a página.
+
+	Em C#:
+	São duas classes
+	A classe ServerReponse é utilizada para tratamento primário como status e reportar algum tipo de informação.
+	Esta classe é utilizada no jds.comm.js para definir a qualidade da informação retornada pelo servidor.
+	Caso a variável ServerOK seja False a camada de dados não irá enviar as informações para a página e sim vai alertar o usuário que ocorreu um erro no servidor.
+	
+	A Classe ServerData é o corpo da resposta do servidor, ou seja os dados corretos que foram requisitados pelo método.
+	Caso a variável ServerOK seja True a camada de dados irá enviar as informações para a página para que o desenvolvedor possa utilizar na página.
+	
+	public class ServerResponse
+    {
+        public ServerData ServerData;
+        public bool ServerOK;
+        public string ServerError;
+        public int ErrorCode;        
+    }
+
+    public class ServerData
+    {        
+        public int TotalRecords;
+        public object Data;
+    }
