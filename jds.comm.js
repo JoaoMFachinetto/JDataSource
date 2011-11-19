@@ -31,6 +31,47 @@ Para informações do pacote padrão ler o arquivo README.txt
 */
 
 
+/* ESTE METODO E UTILIZADO PARA ENVIAR E RECEBER DADOS DO SERVIDOR COM OPÇÃO DE ESCOLHE GET OU POST */
+function AsyncPushData(DataSourceAddr, RequestData, onServerResponse, Method) {
+    SysStatusCommunicating();
+    $.ajax({
+        type: Method,
+        url: DataSourceAddr,
+        dataType: 'json',
+        cache: false,
+        data: RequestData,
+        success: function (Response) {
+            if (typeof (onServerResponse) == 'function') {
+                SysStatusOk();
+                if (Response.ServerOK) {
+                    onServerResponse(Response.ServerData);
+                }
+                else {
+                    if (Response.ErrorCode == 1021) {
+                        //Erro de Sessão Expirada no Servidor                        
+                    }
+                    if (Response.ErrorCode == 1010) {
+                        //Erros genéricos que devem ser tratados no servidor e retornado a mensagem para a página                        
+                        SysStatusError("Server Error: " + Response.ErrorCode + " @ " + ServerAddr + ". <b><font face='arial' size=2 style='background-color: #FFFF00'>Error: " + Response.ServerError + "</font></b>");                        
+                    }
+                }
+            }
+        },
+        beforeSend: function () {
+            SysStatusCommunicating();
+        },
+        ajaxError: function () {
+            SysStatusCommunicatingError();
+        },
+        error: function () {
+            SysStatusCommunicatingError();
+        },
+        ajaxComplete: function () {
+            SysStatusCommunicatingComplete();
+        }
+    });
+}
+
 
 /* ESTE METODO E UTILIZADO PARA ENVIAR E RECEBER DADOS DO SERVIDOR UTILIZANDO O METODO POST */
 function AsyncPostData(DataSourceAddr, RequestData, onServerResponse) {

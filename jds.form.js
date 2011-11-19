@@ -23,4 +23,21 @@ Livre(FSF) Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 */
 
+$.fn.PushForm = function (onServerResponse) {
+    if ($(this).is('form')) {
+        var DataSource = $(this).attr('action');
+        var Method = $(this).attr('method');
+        var Data = $(this).serializeArray();
+        if (Data.length != 0) {
+            AsyncPushData(DataSource, Data, onServerResponse, Method);
+        }
+        else {
+            SysStatusError('Não é possível enviar um formulário em branco.');
+        }
 
+    }
+    else {
+        SysStatusError('Objeto "' + $(this).attr('id') + '" não é um formulário de dados válido.');
+    }
+
+};
